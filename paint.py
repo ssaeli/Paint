@@ -186,23 +186,27 @@ class main:
 		
 		#*************************menus*************************************
 		menu = Menu(self.fen)
+		menucouleurs = Menu(self.fen)
 		self.fen.config(menu=menu)
 		#menus  Outils:
 		self.var1 = IntVar()
 		self.var1.set(0)#choix de départ
+		
+		
 		menu1 = Menu(self.fen)
-		menu.add_cascade(label="Outils", menu = menu1)
+		self.menu.add_cascade(label="Outils", menu = menu1)
 		menu1.add_radiobutton(label="Crayon", value = 0, variable=self.var1)
 		menu1.add_radiobutton(label="Pinceau simple", value = 1, variable=self.var1)
 		menu1.add_radiobutton(label="Pinceau zigzag", value = 2, variable=self.var1)
 		menu1.add_command(label='Effacer le dernier trait',command=self.effaceDernier)
 		menu1.add_command(label='Effacer tout',command=self.effaceTout)
 		
-		menu.add_cascade(label='Colors',menu=colormenu)
-		colormenu = Menu(self.fen)
-        colormenu.add_command(label='Brush Color',command=self.change_fg)
-        colormenu.add_command(label='Background Color',command=self.change_bg)
-        optionmenu = Menu(self.fen)
+		menu1.add_separator()
+		
+		menucouleurs = Menu(self.fen)
+		self.menu.add_cascade(label='Couleurs',menu=menucouleurs)
+        menucouleurs.add_command(label='Couleur')
+        menucouleurs.add_command(label='Couleur de fond')
 		#************************************************************************
 		
 fen = Tk()
